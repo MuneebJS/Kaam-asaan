@@ -2,7 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 import { Grid, Col, Row } from 'react-bootstrap'
 import FeaturedServiceCard from './Card'
-import Title from '../Title'
+import Title from '../../Title'
 import FaMotorcycle from 'react-icons/lib/fa/motorcycle';
 import FaAutomobile from 'react-icons/lib/fa/automobile';
 import FaDesktop from 'react-icons/lib/fa/desktop';

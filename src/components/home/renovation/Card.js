@@ -1,8 +1,7 @@
 import React from 'react';
 import Radium from 'radium';
-import globalConst from '../../globalConst';
-import SubTitle from '../SubTitle';
-require('../../index.css')
+import globalConst from '../../../globalConst';
+import SubTitle from '../../SubTitle';
 
 var styles = {
     wrap: {

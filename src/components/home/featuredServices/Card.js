@@ -1,7 +1,7 @@
 import React from 'react';
 import Radium from 'radium';
-import globalConst from '../../globalConst';
-import SubTitle from '../SubTitle';
+import globalConst from '../../../globalConst';
+import SubTitle from '../../SubTitle';
 require('./card.css')
 
 

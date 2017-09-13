@@ -41,7 +41,7 @@ import globalConst from './globalConst'
     },
     margin10: {
         marginTop: 10
-    }
+    },
 }
 
 

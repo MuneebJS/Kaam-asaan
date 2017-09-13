@@ -2,7 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 import { Grid, Col, Row } from 'react-bootstrap'
 import RenovationCard from './Card'
-import Title from '../Title'
+import Title from '../../Title'
 import FaMotorcycle from 'react-icons/lib/fa/motorcycle';
 import FaChain from 'react-icons/lib/fa/chain';
 import FaAdjust from 'react-icons/lib/fa/adjust';
