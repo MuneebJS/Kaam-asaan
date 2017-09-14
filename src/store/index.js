@@ -1,17 +1,19 @@
 import { combineReducers, applyMiddleware, compose, createStore } from 'redux'
-import { authReducer } from './reducers/authReducer'
+import { requestReducer } from './reducers/reqReducer'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-    authReducer: authReducer
+    requestReducer: requestReducer
 })
 
 const middleware = compose(
     applyMiddleware(thunk, logger())
 );
 
-export let store = createStore(
+const store = createStore(
     rootReducer,
     middleware
 );
+
+export default store;

@@ -25,8 +25,12 @@ var styles = {
     filled: {
       background:  globalConst.themeColor,
       color: '#fff',
-   
-
+      boxShadow: '0px 6px 9px -5px #336',
+      borderColor: globalConst.themeColor,
+        ':hover': {
+          boxShadow: 'none',
+          color: '#eee',
+        }
     }
 
   };
@@ -37,7 +41,7 @@ class Button extends React.Component {
         <button style={Object.assign({}, styles.default, 
           this.props.base && styles.base,
           this.props.filled && styles.filled
-          )}>
+          )} type={this.props.type} onClick={this.props.clickHandler}>
           {this.props.children}
         </button>
       );

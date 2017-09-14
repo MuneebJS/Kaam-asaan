@@ -109,9 +109,9 @@ class Header extends React.Component {
                       </div>
                     </li>
                   <li key={"li3"} style={[styles.headerLi, globalStyles.margin30, styles.borderNone, styles.rightMargin0]}>
-                    <Button base={true} >
+                    <Link to="request_service"> <Button base={true} >
                       Request Service
-                    </Button>
+                    </Button> </Link>
                   </li>
                 </ul>
               </Col>

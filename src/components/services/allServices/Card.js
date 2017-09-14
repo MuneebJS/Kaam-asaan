@@ -34,7 +34,6 @@ class AllServicesCard extends React.PureComponent {
             <div className="service">                
             <Image src={img1} alt="" responsive/>
             <div className="service-overlay" style={styles.overlay}>
-
             <i key={"icon"} style={styles.icon} className="icon">
                 {this.props.icon}
             </i> 

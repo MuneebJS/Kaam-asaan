@@ -3,13 +3,6 @@ import Radium from 'radium';
 import slide1 from '../../assets/images/slide-01.jpg'
 import slide2 from '../../assets/images/slide-02.jpg'
 import slide3 from '../../assets/images/slide-03.jpg'
-// import slide1 from  '../../../assets/images/slide-01'
-// import slide2 from  '../../../assets/images/slide-02'
-// import slide3 from  '../../assets/images/slide-03'
-// import slide2 from  '../../assets/images/slide-02'
-// import slide3 from  '../../assets/images/slide-03'
-// import slide2 from  '../assets/images/slide-02.jpg'
-// import slide3 from  '../../assets/images/slide-03.jpg'
 import {Carousel} from 'react-bootstrap'
 
 
