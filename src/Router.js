@@ -4,9 +4,9 @@ import Layout from './Layout'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/home/Index';
-import Signup from './components/signup/Signup';
-import RequestService from './components/requestService/RequestService';
-import AllServices from './components/services/allServices/AllServices'
+import Signup from './containers/signup/Signup';
+import RequestService from './containers/requestService/RequestService';
+import AllServices from './components/services/allServices/AllServices';
 
 export default class Routes extends React.PureComponent {
     render() {

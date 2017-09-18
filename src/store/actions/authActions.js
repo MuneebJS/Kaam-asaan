@@ -1,4 +1,4 @@
-import AuthActions from './authConst';
+import Actions from './Const';
 import * as firebase from 'firebase'
 import {browserHistory} from 'react-router'
 const signin_successful = () => {
