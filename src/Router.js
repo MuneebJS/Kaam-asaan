@@ -7,6 +7,9 @@ import Home from './components/home/Index';
 import Signup from './containers/signup/Signup';
 import RequestService from './containers/requestService/RequestService';
 import AllServices from './components/services/allServices/AllServices';
+import ContactUs from './components/contactUs/ContactUs';
+import PageNotFound from './components/PageNotFound';
+
 
 export default class Routes extends React.PureComponent {
     render() {
@@ -18,6 +21,8 @@ export default class Routes extends React.PureComponent {
               <Route path='allServices' component={AllServices} />
               {/* <Route path='signup' component={Signup} /> */}
               <Route path='request_service' component={RequestService} />
+              <Route path='contactUs' component={ContactUs} />
+              <Route path="*" component={PageNotFound} />
             </Route>
             </Router>
         )

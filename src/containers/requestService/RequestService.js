@@ -11,6 +11,7 @@ import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.css'
+import moment from 'moment';
 
 
 var styles = {
@@ -29,30 +30,46 @@ class RequestService extends React.Component {
         this.requestHandler = this.requestHandler.bind(this)
         this.dateHandler = this.dateHandler.bind(this)
     }
+    componentDidMount() {
+        // let date = new Date();
+        // let today = date.toUTCString();
+        let today = moment.utc();
+        // console.log(today);
+        this.setState({
+            startDate: today
+        })
+    }
 
     requestHandler(e) {
         e.preventDefault();
+        let today = moment.utc().toLocaleString(); 
+        console.log(today);
         var requestData = {
+            form_submission_date: today,
             service: this.service.value,
             address: this.address.value,
             email: this.email.value,
             phone: this.phone.value,
+            service_date: this.state.startDate.toLocaleString(),
+            timeSlot: this.timeSlot.value
         }
         console.log(requestData)
         this.props.requestService(requestData)
     }
     dateHandler(date) {
+        var selectedDate = date.utc();
+        // console.log(selectedDate)
         this.setState({
-            startDate: date
+            startDate: selectedDate
         })
-        
+        // console.log(this.state.startDate.toString())
     }
     render() {
         return (
             <Grid>
                 <Row className="show-grid">
                     <Col xs={12} >
-                        {/* <Title>Request  Your Service</Title> */}
+                        <Title>Request  Your Service</Title>
                     </Col>
                     <form>
                         <Col xs={12} md={6} mdOffset={3}> 
@@ -105,15 +122,15 @@ class RequestService extends React.Component {
                             <FormGroup controlId="formControlsSelect">
                                 {/* <ControlLabel>Select Time Between</ControlLabel> */}
                                 <FormControl componentClass="select" placeholder="select"
-                                    inputRef={(input) => this.serviceTime = input} >
-                                    <option value="time1">10 to 1</option>
-                                    <option value="time2">1 to 4</option>
-                                    <option value="time3">4 to 7</option>
+                                    inputRef={(input) => this.timeSlot = input} >
+                                    <option value="10 to 1">10 to 1</option>
+                                    <option value="1 to 4">1 to 4</option>
+                                    <option value="4 to 7">4 to 7</option>
                                     {/* <option value="lock">Lock Crack</option> */}
                                 </FormControl>
                             </FormGroup>
                         </Col>
-                        <Col xs={12} style={{ textAlign: 'center', marginBottom: 50 }}>
+                        <Col xs={3} xsOffset={8} style={{ marginBottom: 50, paddingLeft:  0 }}>
                             <Button filled clickHandler={this.requestHandler}>
                                 Submit
                              </Button>

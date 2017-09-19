@@ -126,7 +126,7 @@ class Header extends React.Component {
           <Navbar.Collapse>
             <Nav>
               <NavItem eventKey={1} href="#">
-              <Link to="/allServices">
+              <Link to="/home">
                 <span style={styles.navItem}>
                   Home
                 </span>
@@ -139,34 +139,43 @@ class Header extends React.Component {
                 fontWeight: 600 
               }
               }>
+              <MenuItem eventKey={2.1}>
+              <Link to="/allServices">
+                
+                All Services
+                </Link>
+                
+                </MenuItem>
                 <MenuItem eventKey={2.1}>Plumbing</MenuItem>
+                
+        
                 <MenuItem eventKey={2.2}>Electrician</MenuItem>
                 <MenuItem eventKey={2.3}>Bike Tune-up</MenuItem>
                 <MenuItem divider />
                 <MenuItem eventKey={2.4}>Other Services</MenuItem>
               </NavDropdown>
-              
 
-              <NavItem eventKey={3} href="#">                
-                <span style={styles.navItem}>
-                  Blog
-                </span>
-              </NavItem>
 
               <NavItem eventKey={3} href="#">
+              <Link to="/contactUs">
+                
                 <span style={styles.navItem}>
                   Contact Us
                 </span>
+                </Link>
               </NavItem>
 
               <NavItem eventKey={3} href="#">
+              <Link to="/aboutUs">
+                
                 <span style={styles.navItem}>
                   About Us
                 </span>
+                </Link>
               </NavItem>
             </Nav>
 
-            <Nav pullRight>
+            {/* <Nav pullRight>
               <NavItem eventKey={1} href="#">
                 <span style={styles.navItem}>
                   Register
@@ -178,7 +187,7 @@ class Header extends React.Component {
                   Login
                 </span>
               </NavItem>
-            </Nav>
+            </Nav> */}
           </Navbar.Collapse>
         </Navbar>
       </div>
