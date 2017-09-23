@@ -3,7 +3,7 @@ import Actions from "./../actions/Const"
 
 
 const INITIAL_STATE = {
-    isReqSubmitted: false
+    isReqSubmitted: false,
 }
 
 export const requestReducer = (state = INITIAL_STATE, action) => {

@@ -7,7 +7,7 @@ import FieldGroup from '../../components/FieldGroup'
 import { connect } from 'react-redux';
 import { requestService } from '../../store/actions/requestAction';
 import Button from '../../components/Button'
-import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel, ListGroup, ListGroupItem } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.css'
@@ -42,8 +42,9 @@ class RequestService extends React.Component {
 
     requestHandler(e) {
         e.preventDefault();
-        let today = moment.utc().toLocaleString(); 
-        console.log(today);
+        let today = moment.utc().toLocaleString();
+        let refId = Math.floor(Math.random() * 90000) + 10000;
+        // console.log(today);
         var requestData = {
             form_submission_date: today,
             service: this.service.value,
@@ -51,10 +52,11 @@ class RequestService extends React.Component {
             email: this.email.value,
             phone: this.phone.value,
             service_date: this.state.startDate.toLocaleString(),
-            timeSlot: this.timeSlot.value
+            timeSlot: this.timeSlot.value,
+            refId: refId
         }
-        console.log(requestData)
-        this.props.requestService(requestData)
+        // console.log(requestData)
+        this.props.requestService(requestData,refId)
     }
     dateHandler(date) {
         var selectedDate = date.utc();
@@ -71,8 +73,16 @@ class RequestService extends React.Component {
                     <Col xs={12} >
                         <Title>Request  Your Service</Title>
                     </Col>
+                    <Col xs={12}>
+                      {this.props.isReqSubmitted &&
+                      <ListGroup>
+                            <ListGroupItem bsStyle="success">
+                                Thank you for requesting! your tracking Id is "{this.props.refId}"
+                            </ListGroupItem>
+                        </ListGroup> }
+                    </Col>
                     <form>
-                        <Col xs={12} md={6} mdOffset={3}> 
+                        <Col xs={12} md={6} mdOffset={3}>
                             <FormGroup controlId="formControlsSelect">
                                 <ControlLabel>Select Service</ControlLabel>
                                 <FormControl componentClass="select" placeholder="select"
@@ -101,13 +111,13 @@ class RequestService extends React.Component {
                                 placeholder="Phone Number"
                                 inputRef={(input) => this.phone = input}
                             />
-                            </Col>
-                            <Col md={3} mdOffset={3}>
+                        </Col>
+                        <Col md={3} mdOffset={3}>
                             <FormGroup>
                                 <DatePicker
                                     dateFormat="DD/MM/YYYY"
                                     selected={this.state.startDate}
-                                    onChange={(date) =>  this.dateHandler(date)}
+                                    onChange={(date) => this.dateHandler(date)}
                                     placeholderText="Click to select a date"
                                     className="date-picker"
                                     style={
@@ -116,9 +126,9 @@ class RequestService extends React.Component {
                                 />
 
                             </FormGroup>
-                            </Col>
-                            <Col md={3}>
-                                    
+                        </Col>
+                        <Col md={3}>
+
                             <FormGroup controlId="formControlsSelect">
                                 {/* <ControlLabel>Select Time Between</ControlLabel> */}
                                 <FormControl componentClass="select" placeholder="select"
@@ -130,7 +140,7 @@ class RequestService extends React.Component {
                                 </FormControl>
                             </FormGroup>
                         </Col>
-                        <Col xs={3} xsOffset={8} style={{ marginBottom: 50, paddingLeft:  0 }}>
+                        <Col xs={3} xsOffset={8} style={{ marginBottom: 50, paddingLeft: 0 }}>
                             <Button filled clickHandler={this.requestHandler}>
                                 Submit
                              </Button>
@@ -148,18 +158,19 @@ class RequestService extends React.Component {
 RequestService = Radium(RequestService);
 // export default RequestService;
 
-// const mapStateToProps = state => {
-//   return {
-//       user: state.authReducer
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    isReqSubmitted: state.requestReducer.isReqSubmitted,
+    refId: state.requestReducer.refId
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        requestService: (requestData) => {
-            dispatch(requestService(requestData));
+        requestService: (requestData, refId) => {
+            dispatch(requestService(requestData, refId));
         }
     }
 }
-export default connect(null, mapDispatchToProps)(RequestService)
+export default connect(mapStateToProps, mapDispatchToProps)(RequestService)
 // export default Signup;
