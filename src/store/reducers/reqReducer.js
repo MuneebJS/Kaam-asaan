@@ -4,6 +4,7 @@ import Actions from "./../actions/Const"
 
 const INITIAL_STATE = {
     isReqSubmitted: false,
+    refId: ""
 }
 
 export const requestReducer = (state = INITIAL_STATE, action) => {
@@ -12,6 +13,7 @@ export const requestReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isReqSubmitted: true,
+                refId: action.paylaod
                 // errorMessage : {}
             }
             case Actions.REQUEST_SERVICE_ERROR:
